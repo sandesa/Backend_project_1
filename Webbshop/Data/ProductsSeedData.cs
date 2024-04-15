@@ -14,7 +14,7 @@ namespace Webbshop.Data
 					new Product
 					{
 						Name = "Ljusblå t-shirt",
-						ImageName = "ljusblaTshirt.jpg",
+						ImageName = "ljusbla_tshirt.jpg",
 						Price = 199m,
 						Category = "Kläder",
 						Description = "En bekväm och stilren t-shirt tillverkad av mjuk bomullstyg i ljusblå färg."
@@ -22,7 +22,7 @@ namespace Webbshop.Data
 					new Product
 					{
 						Name = "Vintage läderarmbandsur",
-						ImageName = "vintageUr.jpg",
+						ImageName = "vintage_ur.jpg",
 						Price = 899m,
 						Category = "Accessoarer",
 						Description = "Ett elegant och klassiskt armbandsur med läderband och antik stil som passar både vardag och fest."
@@ -38,7 +38,7 @@ namespace Webbshop.Data
 					new Product
 					{
 						Name = "Trådlösa brusreducerande hörlurar",
-						ImageName = "brusreducerande.jpg",
+						ImageName = "brusreducerande_hörlurar.jpg",
 						Price = 1299m,
 						Category = "Elektronik",
 						Description = "Trådlösa hörlurar med avancerad brusreduceringsteknik för en förstklassig ljudupplevelse utan störande bakgrundsljud."
@@ -54,7 +54,7 @@ namespace Webbshop.Data
 					new Product
 					{
 						Name = "Fitness Yoga Matta",
-						ImageName = "yogaMatta.jpg",
+						ImageName = "yoga_matta.jpg",
 						Price = 299m,
 						Category = "Sport och fritid",
 						Description = "En tjock och slitstark yogamatta som ger komfort och stabilitet under dina yoga- och träningspass."
@@ -94,7 +94,7 @@ namespace Webbshop.Data
 					new Product
 					{
 						Name = "Klassiskt kolsyrat vatten",
-						ImageName = "kolsyratVatten.jpg",
+						ImageName = "kolsyrat_vatten.jpg",
 						Price = 19m,
 						Category = "Mat och dryck",
 						Description = "Ett friskt och bubblande kolsyrat vatten som passar perfekt som törstsläckare vid alla tillfällen."
@@ -126,7 +126,7 @@ namespace Webbshop.Data
 					new Product
 					{
 						Name = "Trådlös Bluetooth-högtalare",
-						ImageName = "bluetoothHögtalare.jpg",
+						ImageName = "bluetooth_högtalare.jpg",
 						Price = 599m,
 						Category = "Elektronik",
 						Description = "En kraftfull trådlös Bluetooth-högtalare med imponerande ljudkvalitet och lång batteritid för att förgylla ditt musiklyssnande."
@@ -134,7 +134,7 @@ namespace Webbshop.Data
 					new Product
 					{
 						Name = "Klassiskt skinnskärp",
-						ImageName = "skinnskärp.jpg",
+						ImageName = "jeansskärp.jpg",
 						Price = 99m,
 						Category = "Kläder",
 						Description = "Ett stilrent och hållbart skinnskärp i klassisk design som kompletterar din outfit på ett elegant sätt."
@@ -158,7 +158,7 @@ namespace Webbshop.Data
 					new Product
 					{
 						Name = "Trådlös mus",
-						ImageName = "trådlösMus.jpg",
+						ImageName = "trådlös_mus.jpg",
 						Price = 149m,
 						Category = "Elektronik",
 						Description = "En smidig och ergonomisk trådlös mus med precisionsspårning och bekväm grepp, perfekt för arbete och spel."
@@ -174,7 +174,7 @@ namespace Webbshop.Data
 					new Product
 					{
 						Name = "Grönt te med ingefära och citron",
-						ImageName = "gröntTe.jpg",
+						ImageName = "grönt_te.jpg",
 						Price = 79m,
 						Category = "Mat och dryck",
 						Description = "Ett uppfriskande grönt te med en touch av ingefära och citron, perfekt för att njuta av en lugn stund eller som en uppiggande dryck."
@@ -206,7 +206,7 @@ namespace Webbshop.Data
 					new Product
 					{
 						Name = "Trådlöst tangentbord och mus set",
-						ImageName = "tangentbordMusSet.jpg",
+						ImageName = "tangentbord_mus_set.jpg",
 						Price = 399m,
 						Category = "Elektronik",
 						Description = "En bekväm och effektiv kombination av trådlöst tangentbord och mus för smidig och trådlös datorkommunikation."
@@ -222,7 +222,7 @@ namespace Webbshop.Data
 					new Product
 					{
 						Name = "Trendig ryggsäck i canvas",
-						ImageName = "ryggsäck.jpg",
+						ImageName = "canvas_ryggsäck.jpg",
 						Price = 449m,
 						Category = "Accessoarer",
 						Description = "En trendig och praktisk ryggsäck tillverkad av slitstark canvas med flera fickor och justerbara remmar för maximal bekvämlighet."
@@ -238,7 +238,7 @@ namespace Webbshop.Data
 					new Product
 					{
 						Name = "Energisparande LED-lampa",
-						ImageName = "LEDLampa.jpg",
+						ImageName = "LED-lampa.jpg",
 						Price = 69m,
 						Category = "Hem och trädgård",
 						Description = "En energisnål och miljövänlig LED-lampa som ger starkt och klart ljus med låg strömförbrukning och lång livslängd."

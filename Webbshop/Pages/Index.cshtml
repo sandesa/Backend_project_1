@@ -6,3 +6,21 @@
 }
 
 <h1>Welcome, @accessControl.LoggedInAccountName!</h1>
+ <div class="container products">
+@foreach (var product in Model.Products)
+{
+    <div class="container product">
+        <div class="container card">
+            <div class="container img">
+                <img src="/images/products/@product.ImageName" alt="@product.ImageName" />
+            </div>
+            <div>
+                <h3>@product.Name</h3>
+                <p>@product.Description</p>
+                <span>@(product.Price.ToString("c"))</span>
+                <a asp-page="/Order" asp-route-id="@product.Id"><button>Order Now</button></a>
+            </div>
+        </div>
+    </div>
+}
+</div>
