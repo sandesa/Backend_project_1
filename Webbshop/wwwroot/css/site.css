@@ -1,8 +1,32 @@
-img {
-    width: 200px
-}
-
 .container.products {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr 1fr 1fr 1fr
+}
+
+.container.product {
+    width: 300px; 
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.container.img img {
+    width: 100%; 
+    height: auto;
+    border-radius: 5px;
+}
+
+
+.container.card span {
+    font-weight: bold;
+}
+
+.container.card a {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+button{
+    cursor: pointer;
 }
