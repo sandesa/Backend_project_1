@@ -4,62 +4,35 @@
     padding: 0;
 }
 
-img {
-    width: 300px;
-}
-
-nav {
-    position: relative;
-    display: flex;
-    width: 100%;
-    align-items: stretch;
-}
-
-ul {
-    list-style: none;
-    display: flex;
-    justify-content: flex-end;
-}
-
-li {
-    display: list-item;
-}
-
-.nav-link {
-    color: black;
-    text-decoration: none;
-}
-
-.title {
-    color: black;
-    font-size: 2.5rem;
-    text-decoration: none;
-}
-
-.container.image {
-    display: flex;
-    justify-content: center;
-    background-color: gray;
-}
-
 .container.products {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr
 }
 
-.container.product{
-    flex:0 0 auto;
-    width: 25%;
-    padding: .25rem;
+.container.product {
+    width: 300px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.container.card {
-    height: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    border: 1px solid rgba(0, 0, 0, .125);
+.container.img img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+
+.container.card span {
+    font-weight: bold;
+}
+
+.container.card a {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+button {
+    cursor: pointer;
 }
