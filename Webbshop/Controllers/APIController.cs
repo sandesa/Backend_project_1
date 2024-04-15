@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Webbshop.Data;
+using Webbshop.Migrations;
+using Webbshop.Models;
 
 namespace Webbshop.Controllers
 {
@@ -14,6 +16,12 @@ namespace Webbshop.Controllers
 		public APIController(AppDbContext database)
 		{
 			this.database = database;
+		}
+
+		[HttpGet]
+		public async Task<ActionResult<List<Product>>> GetProducts()
+		{
+			return await database.Products.ToListAsync();
 		}
 	}
 }
