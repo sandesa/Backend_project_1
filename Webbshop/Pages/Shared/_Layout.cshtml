@@ -8,10 +8,30 @@
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
     <script src="~/js/site.js" asp-append-version="true" defer></script>
+    <script src="https://kit.fontawesome.com/6d1964bbc6.js"
+            crossorigin="anonymous"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </head>
 <body>
     <header>
+        <nav>
+            <div>
+                <a class="title" href="/">The Webbshop</a>
+            </div>
+            <ul>
+                <li>
+                    <a class="nav-link" asp-page="/">Home</a>
+                </li>
+                <li>
+                    <a class="nav-link" asp-page="/About">About</a>
+                </li>
+                <li>
+                    <a class="nav-link" asp-page="/Checkout">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
         <environment names="Development">
             @await Component.InvokeAsync(nameof(FakeLoginMenu))
         </environment>
