@@ -7,16 +7,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewData["Title"]</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
     <script src="~/js/site.js" asp-append-version="true" defer></script>
+    <script src="https://kit.fontawesome.com/6d1964bbc6.js"
+            crossorigin="anonymous"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </head>
 <body>
     <header>
-        <environment names="Development">
-            @await Component.InvokeAsync(nameof(FakeLoginMenu))
-        </environment>
+        <nav class="container">
+            <div>
+                <a class="head-title" href="/">The Webbshop</a>
+            </div>
+            <ul>
+                <li>
+                    <a class="nav-link" asp-page="/Index">Home</a>
+                </li>
+                <li>
+                    <a class="nav-link" asp-page="/About">About</a>
+                </li>
+                <li>
+                    <a class="nav-link" asp-page="/Checkout">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </header>
     <main>
+        <div class="login" style="margin-bottom: 10px">
+            <environment names="Development">
+                @await Component.InvokeAsync(nameof(FakeLoginMenu))
+            </environment>
+        </div>
         @RenderBody()
     </main>
 </body>

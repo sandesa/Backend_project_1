@@ -22,7 +22,7 @@ namespace Webbshop.Pages.Shared.Components.LoginMenu
 			{
 				Value = p.ID.ToString(),
 				Text = p.Name,
-				Selected = p.ID == accessControl.LoggedInAccountID
+				Selected = p.ID == accessControl.GetLoggedInAccountId()
 			});
 			return View(selectList);
 		}

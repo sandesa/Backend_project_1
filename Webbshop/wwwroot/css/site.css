@@ -1,32 +1,135 @@
-.container.products {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.container.product {
-    width: 300px; 
-    margin: 10px;
+:root {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+body {
+    background-color: grey;
+}
+
+header {
+    border-bottom: 1px solid #dee2e6;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+    padding: 1rem 4rem;
+    margin-bottom: 1rem;
+}
+
+img {
+    max-width: 500px;
+}
+
+h1 {
+    font-weight: normal;
+}
+
+ul {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+li {
+    padding-left: 3rem;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+nav {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+i {
     padding: 10px;
+    color: white;
+    background-color: dodgerblue;
+    border-radius: 5px;
+}
+
+.login {
+    margin-left: 20px;
+}
+
+.container {
+    max-width: 1260px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.head-title {
+    font-family: Limelight, sans-serif;
+    font-size: 2.5rem;
+}
+
+.container.products {
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.container-product {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 300px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    height: 100%;
 }
 
-.container.img img {
-    width: 100%; 
+.container-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.container-img img {
+    width: 100%;
     height: auto;
-    border-radius: 5px;
 }
 
 
-.container.card span {
+.container-card span {
     font-weight: bold;
 }
 
-.container.card a {
+.container-card a {
     display: inline-block;
     margin-left: 5px;
 }
 
-button{
+.card-body {
+    padding: 15px;
+    height: 100%;
+}
+
+.card-title {
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.card-desc {
+    margin-bottom: 20px;
+}
+
+.bot-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+button {
     cursor: pointer;
 }
