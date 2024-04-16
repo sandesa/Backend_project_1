@@ -6,7 +6,7 @@
 }
 
 <div class="container">
-    <h1>Welcome, @accessControl.LoggedInAccountName!</h1>
+    <h1>Welcome, @accessControl.GetLoggedInAccountName()!</h1>
     <div class="container products">
         @foreach (var product in Model.Products)
         {
