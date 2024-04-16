@@ -1,5 +1,4 @@
-﻿using System;
-using Webbshop.Models;
+﻿using Webbshop.Models;
 
 namespace Webbshop.Data
 {

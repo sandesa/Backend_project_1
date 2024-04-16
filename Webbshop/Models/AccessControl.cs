@@ -1,9 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Security.Claims;
-using Webbshop.Data;
-using Webbshop.Models;
+﻿using System.Security.Claims;
 
 namespace Webbshop.Data
 {
@@ -29,9 +24,9 @@ namespace Webbshop.Data
                 var account = _dbContext.Accounts
                     .FirstOrDefault(p => p.OpenIDIssuer == issuer && p.OpenIDSubject == subject);
 
-                return account?.ID ?? -1; // Return -1 if account is not found
+                return account?.ID ?? -1;
             }
-            return -1; // Return -1 if user is not authenticated
+            return -1;
         }
 
         public string GetLoggedInAccountName()
