@@ -1,10 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-
-namespace Webbshop.Models
+﻿namespace Webbshop.Models
 {
     public class Basket
     {
-        public List<OrderItem> Items { get; set; }
-        public int NumberOfItems => Items.Sum(p => p.Quantity);
+        public int Id { get; set; }
+        public List<OrderItem> Items { get; set; } = new();
+        public int NumberOfItems => Items.Sum(x => x.Quantity);
     }
 }
