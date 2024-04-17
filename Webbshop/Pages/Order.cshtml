@@ -13,11 +13,14 @@
         <form class="order-form" method="post">
             <div class="">
                 <label asp-for="Quantity" class="quantity-label"></label>
-                <input asp-for="Quantity" class="quantity-input"/>
+                <input asp-for="Quantity" class="quantity-input" />
                 <span asp-validation-for="Quantity"></span>
             </div>
-			<p>Unit cost: @(Model.Product.Price.ToString("c"))</p>
+            <p>Unit cost: @(Model.Product.Price.ToString("c"))</p>
             <button type="submit" class="submit-btn">Place order</button>
         </form>
+
 	</div>
 </div>
+
+
