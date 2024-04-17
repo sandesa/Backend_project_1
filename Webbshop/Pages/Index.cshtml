@@ -38,17 +38,19 @@
         {
             <div class="container-product">
                 <div class="container-card">
-                    <div class="container-img">
-                        <img src="/images/products/@product.ImageName" alt="@product.ImageName" />
-                    </div>
-                    <div class="card-body">
-                        <h2 class="card-title">@product.Name</h2>
-                        <p class="card-desc">@product.Description</p>
-                        <div class="bot-info">
-                            <span>@(product.Price.ToString("c"))</span>
-                            <a asp-page="/Order" asp-route-id="@product.Id"><button>Order Now</button></a>
+                    <a asp-page="/Order" asp-route-id="@product.Id">
+                        <div class="container-img">
+                            <img src="/images/products/@product.ImageName" alt="@product.ImageName" />
                         </div>
-                    </div>
+                        <div class="card-body">
+                            <h2 class="card-title">@product.Name</h2>
+                            <p class="card-desc">@product.Description</p>
+                            <div class="bot-info">
+                                <span>@(product.Price.ToString("c"))</span>
+                                <a asp-page="/Order" asp-route-id="@product.Id"><button>Order Now</button></a>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         }
