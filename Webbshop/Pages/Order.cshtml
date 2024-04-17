@@ -1,26 +1,35 @@
 ﻿@page "{id:int}"
 @model Webbshop.Pages.OrderModel
 @{
-	ViewData["Title"] = "Place your order";
+    ViewData["Title"] = "Place your order";
 }
-<div class="container">
-	<div style="display: flex; flex-wrap: wrap;">
-		<div>
-			<h2 style="font-weight: normal; margin-bottom: 20px; font-size: 2rem;">@Model.Product.Name</h2>
-			<img class="" src="/images/products/@Model.Product.ImageName" title="@Model.Product.Name" />
-			<p style="margin-top: 20px;">@Model.Product.Description</p>
-		</div>
-        <form class="order-form" method="post">
-            <div class="">
-                <label asp-for="Quantity" class="quantity-label"></label>
-                <input asp-for="Quantity" class="quantity-input" />
-                <span asp-validation-for="Quantity"></span>
-            </div>
-            <p>Unit cost: @(Model.Product.Price.ToString("c"))</p>
-            <button type="submit" class="submit-btn">Place order</button>
-        </form>
+<head>
+    <link rel="stylesheet" href="/css/order.css" />
+</head>
+<div class="main">
+    <div class="container">
+        <div class="left-column">
+            <img class="" src="/images/products/@Model.Product.ImageName" title="@Model.Product.Name" />
+        </div>
 
-	</div>
+        <div class="right-column">
+            <div class="product-desc">
+                <h2>@Model.Product.Name</h2>
+                <p>@Model.Product.Description</p>
+            </div>
+
+            <form class="order-form" method="post">
+                <div class="product-price">
+                    <label asp-for="Quantity" class="quantity-label"></label>
+                    <input asp-for="Quantity" class="quantity-input" />
+                    <span asp-validation-for="Quantity"></span>
+                    <p>Unit cost: @(Model.Product.Price.ToString("c"))</p>
+                    <button type="submit" class="submit-btn">Place order</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
 </div>
 
 
