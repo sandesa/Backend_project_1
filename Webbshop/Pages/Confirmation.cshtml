@@ -1,0 +1,11 @@
+﻿@page
+@model Webbshop.Pages.ConfirmationModel
+@{
+    ViewData["Title"] = "Confirmation";
+    var confirmation = TempData["Confirmation"] as string;
+}
+<div class="container">
+    <p>@confirmation</p>
+    <p>Total cost: @Model.TotalCost.ToString("c")</p>
+    
+</div>

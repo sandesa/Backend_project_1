@@ -1,6 +1,7 @@
 ﻿@page
 @model Webbshop.Pages.CheckoutModel
 @{
+    ViewData["Title"] = "Checkout";
 }
 <div class="container">
     <h1 class="">Checkout</h1>
@@ -21,17 +22,17 @@
                     <tr>
                         <td>@Model.SelectedProducts.First(x => x.Id == item.ProductId).Name</td>
                         <td>@item.Quantity</td>
-                        <td>@item.UnitPrice</td>
-                        <td class="">@(item.Quantity * item.UnitPrice)</td>
+                        <td>@((item.UnitPrice).ToString("c"))</td>
+                        <td class="">@((item.Quantity * item.UnitPrice).ToString("c"))</td>
                     </tr>
                 }
             </tbody>
             <tfoot class="">
                 <tr>
-                    <td>Total</td>
+                    <td><b>Total:</b></td>
                     <td></td>
                     <td></td>
-                    <td class="">@Model.Basket.Items.Sum(x => x.Quantity * x.UnitPrice)</td>
+                    <td class="">@Model.Basket.Items.Sum(x => x.Quantity * x.UnitPrice).ToString("c")</td>
                 </tr>
             </tfoot>
         </table>

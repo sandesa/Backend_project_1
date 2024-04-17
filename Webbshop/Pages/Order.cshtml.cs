@@ -29,9 +29,6 @@ namespace Webbshop.Pages
         [BindProperty]
         public decimal Price { get; set; }
 
-        [TempData]
-        public string Confirmation { get; set; }
-
         public async Task OnGetAsync()
         {
             Product = await context.Products.FindAsync(Id);
@@ -80,8 +77,13 @@ namespace Webbshop.Pages
 
                 await context.SaveChangesAsync();
 
-                Confirmation = "Your order has been placed successfully!";
-                return RedirectToPage("/Index");
+                string confirmation = "Your order has been placed successfully!";
+                TempData["Confirmation"] = confirmation;
+
+                decimal totalCost = Quantity * Price;
+                TempData["TotalCost"] = totalCost.ToString();
+
+                return RedirectToPage("/Confirmation");
             }
             Product = await context.Products.FindAsync(Id);
             return Page();

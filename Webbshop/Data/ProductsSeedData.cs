@@ -21,7 +21,7 @@ namespace Webbshop.Data
 					},
 					new Product
 					{
-						Name = "Vintage läderarmbandsur",
+						Name = "Vintage armbandsur",
 						ImageName = "vintage_ur.jpg",
 						Price = 899m,
 						Category = "Accessoarer",
@@ -37,7 +37,7 @@ namespace Webbshop.Data
 					},
 					new Product
 					{
-						Name = "Trådlösa brusreducerande hörlurar",
+						Name = "Trådlösa hörlurar",
 						ImageName = "brusreducerande_hörlurar.jpg",
 						Price = 1299m,
 						Category = "Elektronik",
@@ -77,7 +77,7 @@ namespace Webbshop.Data
 					},
 					new Product
 					{
-						Name = "Smart trådlös laddningsplatta",
+						Name = "Smart laddningsplatta",
 						ImageName = "laddningsplatta.jpg",
 						Price = 249m,
 						Category = "Elektronik",
@@ -125,7 +125,7 @@ namespace Webbshop.Data
 					},
 					new Product
 					{
-						Name = "Trådlös Bluetooth-högtalare",
+						Name = "Trådlös högtalare",
 						ImageName = "bluetooth_högtalare.jpg",
 						Price = 599m,
 						Category = "Elektronik",
@@ -149,7 +149,7 @@ namespace Webbshop.Data
 					},
 					new Product
 					{
-						Name = "Energibar med nötter och frön",
+						Name = "Ekologisk energibar",
 						ImageName = "energibar.jpg",
 						Price = 29m,
 						Category = "Mat och dryck",
@@ -173,7 +173,7 @@ namespace Webbshop.Data
 					},
 					new Product
 					{
-						Name = "Grönt te med ingefära och citron",
+						Name = "Grönt te",
 						ImageName = "grönt_te.jpg",
 						Price = 79m,
 						Category = "Mat och dryck",
@@ -181,7 +181,7 @@ namespace Webbshop.Data
 					},
 					new Product
 					{
-						Name = "Resistent träningsgummiband",
+						Name = "Träningsgummiband",
 						ImageName = "träningsgummiband.jpg",
 						Price = 89m,
 						Category = "Sport och fritid",
@@ -205,7 +205,7 @@ namespace Webbshop.Data
 					},
 					new Product
 					{
-						Name = "Trådlöst tangentbord och mus set",
+						Name = "Tangentbord och mus",
 						ImageName = "tangentbord_mus_set.jpg",
 						Price = 399m,
 						Category = "Elektronik",
@@ -221,7 +221,7 @@ namespace Webbshop.Data
 					},
 					new Product
 					{
-						Name = "Trendig ryggsäck i canvas",
+						Name = "Ryggsäck i canvas",
 						ImageName = "canvas_ryggsäck.jpg",
 						Price = 449m,
 						Category = "Accessoarer",
@@ -237,7 +237,7 @@ namespace Webbshop.Data
 					},
 					new Product
 					{
-						Name = "Energisparande LED-lampa",
+						Name = "Eko LED-lampa",
 						ImageName = "LED-lampa.jpg",
 						Price = 69m,
 						Category = "Hem och trädgård",
