@@ -18,7 +18,7 @@
                         <th>Quantity</th>
                         <th>Cost per unit</th>
                         <th class="">Total</th>
-                        <td colspan="5">
+                        <td colspan="5" class="delete">
                             <form method="post" asp-page-handler="RemoveAllItems">
                                 <button type="submit">Delete All</button>
                             </form>
@@ -33,7 +33,7 @@
                             <td>@item.Quantity</td>
                             <td>@((item.UnitPrice).ToString("c"))</td>
                             <td class="">@((item.Quantity * item.UnitPrice).ToString("c"))</td>
-                            <td>
+                            <td class="delete">
                                 <form method="post" asp-page-handler="RemoveProduct" asp-route-itemId="@item.Id">
                                     <button type="submit">Delete</button>
                                 </form>
