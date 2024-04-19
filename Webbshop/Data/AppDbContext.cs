@@ -14,5 +14,10 @@ namespace Webbshop.Data
 			: base(options)
 		{
 		}
-	}
+
+        internal object Findasync(int id)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

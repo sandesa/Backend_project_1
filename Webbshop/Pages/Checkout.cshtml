@@ -3,42 +3,55 @@
 @{
     ViewData["Title"] = "Checkout";
 }
-<div class="container">
-    <h1 class="">Checkout</h1>
+<head>
+    <link rel="stylesheet" href="/css/Checkout.css" />
+</head>
+<div class="main">
+<div class="checkout-container">
+    <h1 class="title">Checkout</h1>
     @if (Model.Basket != null && Model.Basket.NumberOfItems > 0)
     {
-        <table class="">
-            <thead>
-                <tr>
-                    <th>Item</th>
-                    <th>Quantity</th>
-                    <th>Cost per unit</th>
-                    <th class="">Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Basket.Items)
-                {
+            <table class="item">
+                <thead>
                     <tr>
-                        <td>@Model.SelectedProducts.First(x => x.Id == item.ProductId).Name</td>
-                        <td>@item.Quantity</td>
-                        <td>@((item.UnitPrice).ToString("c"))</td>
-                        <td class="">@((item.Quantity * item.UnitPrice).ToString("c"))</td>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Cost per unit</th>
+                        <th class="">Total</th>
+                        <td colspan="5" class="delete">
+                            <form method="post" asp-page-handler="RemoveAllItems">
+                                <button type="submit">Delete All</button>
+                            </form>
+                        </td>
                     </tr>
-                }
-            </tbody>
-            <tfoot class="">
-                <tr>
-                    <td><b>Total:</b></td>
-                    <td></td>
-                    <td></td>
-                    <td class="">@Model.Basket.Items.Sum(x => x.Quantity * x.UnitPrice).ToString("c")</td>
-                </tr>
-            </tfoot>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Basket.Items)
+                    {
+                        <tr>
+                            <td>@Model.SelectedProducts.First(x => x.Id == item.ProductId).Name</td>
+                            <td>@item.Quantity</td>
+                            <td>@((item.UnitPrice).ToString("c"))</td>
+                            <td class="">@((item.Quantity * item.UnitPrice).ToString("c"))</td>
+                            <td class="delete">
+                                <form method="post" asp-page-handler="RemoveProduct" asp-route-itemId="@item.Id">
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot class="total-price">
+                    <tr>
+                        <td colspan="4"><b>Total:</b></td>
+                        <td class="">@Model.Basket.Items.Sum(x => x.Quantity * x.UnitPrice).ToString("c")</td>
+                    </tr>
+                </tfoot>
+            </table>
     }
     else
     {
         <p>Your basket is currently empty</p>
     }
+</div>
 </div>
