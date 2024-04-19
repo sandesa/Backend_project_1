@@ -20,9 +20,9 @@ namespace Webbshop.Pages.Shared.Components.LoginMenu
 			var accounts = database.Accounts.OrderBy(a => a.Name);
 			var selectList = accounts.Select(p => new SelectListItem
 			{
-				Value = p.ID.ToString(),
+				Value = p.Id.ToString(),
 				Text = p.Name,
-				Selected = p.ID == accessControl.GetLoggedInAccountId()
+				Selected = p.Id == accessControl.GetLoggedInAccountId()
 			});
 			return View(selectList);
 		}

@@ -1,8 +1,9 @@
-﻿namespace Webbshop.Models
+﻿using Webbshop.Models.Base;
+
+namespace Webbshop.Models
 {
-    public class Basket
+    public class Basket : BaseModel
     {
-        public int Id { get; set; }
         public List<OrderItem> Items { get; set; } = new();
         public int NumberOfItems => Items.Sum(x => x.Quantity);
         public int AccountId { get; set; }

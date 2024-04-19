@@ -1,8 +1,9 @@
-﻿namespace Webbshop.Models
+﻿using Webbshop.Models.Base;
+
+namespace Webbshop.Models
 {
-	public class Account
+	public class Account : BaseModel
 	{
-		public int ID { get; set; }
 		public string OpenIDIssuer { get; set; }
 		public string OpenIDSubject { get; set; }
 		public string Name { get; set; }

@@ -24,7 +24,7 @@ namespace Webbshop.Data
                 var account = _dbContext.Accounts
                     .FirstOrDefault(p => p.OpenIDIssuer == issuer && p.OpenIDSubject == subject);
 
-                return account?.ID ?? -1;
+                return account?.Id ?? -1;
             }
             return -1;
         }

@@ -1,10 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Webbshop.Models.Base;
 
 namespace Webbshop.Models
 {
-	public class Product
+	public class Product : BaseModel
 	{
-		public int Id { get; set; }
 		[Required]
 		public string Name { get; set; }
 		[Required]
