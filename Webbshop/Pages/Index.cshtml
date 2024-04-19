@@ -11,48 +11,9 @@
 <div class="container">
     <div>
         <h1>Welcome, @accessControl.GetLoggedInAccountName()!</h1>
-        <form class="search-form" method="get">
-            <div class="" style="display: flex; flex-direction: row; width: 100%; justify-content: space-between;">
-                <div>
-                    <input  class="" />
-                    <button type="submit" class="search-btn">Search</button>
-                </div>
-                <div>
-                    <label for="filter">Filter:</label>
-                    <select id="filter">
-                        <option value="">All</option>
-                        <option value="Kläder">Kläder</option>
-                        <option value="Accessoarer">Accessoarer</option>
-                        <option value="Mat och dryck">Mat och dryck</option>
-                        <option value="Elektronik">Elektronik</option>
-                        <option value="Hem och trädgård">Hem och trädgård</option>
-                        <option value="Sport och fritid">Sport och fritid</option>
-                        <option value="Utomhus">Utomhus</option>
-                    </select>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="container products">
-        @foreach (var product in Model.Products)
-        {
-            <div class="container-product">
-                <div class="container-card">
-                    <a asp-page="/Order" asp-route-id="@product.Id">
-                        <div class="container-img">
-                            <img src="/images/products/@product.ImageName" alt="@product.ImageName" />
-                        </div>
-                        <div class="card-body">
-                            <h2 class="card-title">@product.Name</h2>
-                            <p class="card-desc">@product.Description</p>
-                            <div class="bot-info">
-                                <span>@(product.Price.ToString("c"))</span>
-                                <a asp-page="/Order" asp-route-id="@product.Id"><button>Order Now</button></a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        }
+        <div>
+            <a asp-page="/Search"><button>Search for a product</button></a>
+            <a asp-page="/Checkout"><button>View cart</button></a>
+        </div>
     </div>
 </div>

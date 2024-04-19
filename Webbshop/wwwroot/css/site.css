@@ -50,15 +50,15 @@ nav {
     justify-content: space-between;
 }
 
-i {
+.login {
+    margin-left: 20px;
+}
+
+.checkout {
     padding: 10px;
     color: white;
     background-color: dodgerblue;
     border-radius: 5px;
-}
-
-.login {
-    margin-left: 20px;
 }
 
 .container {

@@ -7,7 +7,7 @@ using Webbshop.Models;
 
 namespace Webbshop.Controllers
 {
-	[Route("/api")]
+	[Route("/api/products")]
 	[ApiController]
 	public class APIController : ControllerBase
 	{
@@ -18,10 +18,26 @@ namespace Webbshop.Controllers
 			this.database = database;
 		}
 
-		[HttpGet]
-		public async Task<ActionResult<List<Product>>> GetProducts()
-		{
-			return await database.Products.ToListAsync();
-		}
-	}
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<Product>>> GetProducts(string searchString, string filterString, int page = 1)
+        //{
+        //    IQueryable<Product> products = database.Products;
+
+        //    if (!string.IsNullOrEmpty(searchString))
+        //    {
+        //        products = products.Where(p => p.Name.Contains(searchString));
+        //    }
+
+        //    if (!string.IsNullOrEmpty(filterString))
+        //    {
+        //        products = products.Where(p => p.Category.Contains(filterString));
+        //    }
+
+        //    int pageSize = 10;
+        //    int skip = (page - 1) * pageSize;
+
+        //    var result = await products.Skip(skip).Take(pageSize).ToListAsync();
+        //    return Ok(result);
+        //}
+    }
 }
