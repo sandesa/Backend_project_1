@@ -21,7 +21,7 @@
             <form class="order-form" method="post">
                 <div class="product-price">
                     <label asp-for="Quantity" class="quantity-label"></label>
-                    <input asp-for="Quantity" class="quantity-input" />
+                    <input asp-for="Quantity" class="quantity-input" type="number" min="1" />
                     <span asp-validation-for="Quantity"></span>
                     <p>Unit cost: @(Model.Product.Price.ToString("c"))</p>
                     <button type="submit" class="submit-btn">Place order</button>
