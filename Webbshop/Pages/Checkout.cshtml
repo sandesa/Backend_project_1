@@ -29,6 +29,9 @@
                     @foreach (var item in Model.Basket.Items)
                     {
                         <tr>
+                            <td>
+                                <img src="/images/products/@Model.SelectedProducts.First(x => x.Id == item.ProductId).ImageName" alt="Product Image" />
+                            </td>
                             <td>@Model.SelectedProducts.First(x => x.Id == item.ProductId).Name</td>
                             <td>@item.Quantity</td>
                             <td>@((item.UnitPrice).ToString("c"))</td>
@@ -43,7 +46,7 @@
                 </tbody>
                 <tfoot class="total-price">
                     <tr>
-                        <td colspan="4"><b>Total:</b></td>
+                        <td colspan="5"><b>Total:</b></td>
                         <td class="">@Model.Basket.Items.Sum(x => x.Quantity * x.UnitPrice).ToString("c")</td>
                     </tr>
                 </tfoot>
