@@ -41,4 +41,34 @@
 .total-price {
     font-weight: bold;
 }
+@media screen and (max-width: 950px) {
 
+    .checkout-container {
+        width:100%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .item img {
+        width: 150px;
+    }
+}
+
+    @media screen and (max-width: 480px) {
+        .checkout-container {
+            padding: 10px; /* Adjust padding for smaller screens */
+        }
+
+        .title {
+            font-size: 18px; /* Adjust font size for smaller screens */
+        }
+
+        .item th:first-child,
+        .item td:first-child {
+            width: 25%; /* Adjust column width for smaller screens */
+        }
+
+        .item img {
+            width: 30px;
+        }
+    }
