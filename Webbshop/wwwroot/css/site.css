@@ -236,7 +236,13 @@ container back-btn {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+.container-btn {
+    text-align: center; 
+}
 
+.search-btn {
+    margin: 7px;
+}
 
 @media (max-width: 1300px) {
     .container.products {
@@ -290,12 +296,6 @@ container back-btn {
             nav.container ul li {
                 margin-bottom: 10px; /* Adjust as needed for spacing */
             }
-
-    .item img {
-        width: 150px;
-       
-    }
-
 
 }
 
