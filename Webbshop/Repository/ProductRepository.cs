@@ -20,7 +20,7 @@ namespace Webbshop.Repository
 
         public ICollection<Product> GetProducts()
         {
-            return contex.Products.OrderBy(p => p.Category).Take(10).ToList();
+            return contex.Products.OrderBy(p => p.Category).ToList();
         }
 
         public ICollection<Product> GetProducts(int? page, string? name, string? category)
@@ -39,13 +39,10 @@ namespace Webbshop.Repository
 
             if (page == null)
             {
-                return products.Distinct().OrderBy(p => p.Category).Take(10).ToList();
+                return products.Distinct().OrderBy(p => p.Category).ToList();
             }
 
-            return products.Distinct().OrderBy(p => p.Category)
-                            .Skip(((int)page - 1) * 10)
-                            .Take(10)
-                            .ToList();
+            return products.Distinct().OrderBy(p => p.Category).ToList();
         }
 
         public bool ProductExists(int id)

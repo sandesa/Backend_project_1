@@ -13,13 +13,13 @@ namespace Webbshop.Pages
             this.httpClient= httpClient;
         }
 
-        [BindProperty]
+        [BindProperty(SupportsGet = true)]
         public string Filter { get; set; }
 
-        [BindProperty]
+        [BindProperty(SupportsGet = true)]
         public string Search { get; set; }
 
-        [BindProperty]
+        [BindProperty(SupportsGet = true)]
         public int? PageNum { get; set; }
 
         public int CurrentPage { get; set; }
@@ -30,15 +30,23 @@ namespace Webbshop.Pages
         {
             try
             {
-                var uRI = $"https://localhost:5000/api";
+                var uRI = $"https://localhost:5000/api/results";
 
-                if(filter != null || search != null)
+                if (!string.IsNullOrEmpty(search) || !string.IsNullOrEmpty(filter) || pageNum.HasValue)
                 {
-                    uRI += $"/results?search={search}&filter={filter}";
-                    
-                    if(PageNum != null)
+                    uRI += "?";
+
+                    if (!string.IsNullOrEmpty(search))
+                        uRI += $"search={search}";
+
+                    if (!string.IsNullOrEmpty(filter))
+                        uRI += $"&filter={filter}";
+
+                    if (pageNum.HasValue)
                     {
-                        uRI += $"/results?page={pageNum}search={search}&filter={filter}";
+                        if (!string.IsNullOrEmpty(search) || !string.IsNullOrEmpty(filter))
+                            uRI += "&";
+                        uRI += $"page={pageNum}";
                     }
                 }
 
@@ -60,7 +68,9 @@ namespace Webbshop.Pages
 
             CurrentPage = pageNum ?? 1;
 
-            int totalProducts = Products.Count();
+            int totalProducts = Products.Count;
+
+            Products = Products.Skip((CurrentPage - 1) * 10).Take(10).ToList();
 
             TotalPages = (int)Math.Ceiling((double)totalProducts / 10);
 
