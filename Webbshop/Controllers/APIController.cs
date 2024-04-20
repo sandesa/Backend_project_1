@@ -1,43 +1,64 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Webbshop.Data;
-using Webbshop.Migrations;
+using Webbshop.Interfaces;
 using Webbshop.Models;
 
 namespace Webbshop.Controllers
 {
-	[Route("/api/products")]
-	[ApiController]
-	public class APIController : ControllerBase
-	{
-		private readonly AppDbContext database;
+    [AllowAnonymous]
+    [Route("/api")]
+    [ApiController]
+    public class APIController : ControllerBase
+    {
+        private readonly IProductRepository productRepository;
 
-		public APIController(AppDbContext database)
-		{
-			this.database = database;
-		}
+        public APIController(IProductRepository productRepository)
+        {
+            this.productRepository = productRepository;
+        }
 
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<Product>>> GetProducts(string searchString, string filterString, int page = 1)
-        //{
-        //    IQueryable<Product> products = database.Products;
+        [HttpGet]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Product>))]
+        [ProducesResponseType(400)]
+        public IActionResult GetProducts()
+        {
+            var products = productRepository.GetProducts();
 
-        //    if (!string.IsNullOrEmpty(searchString))
-        //    {
-        //        products = products.Where(p => p.Name.Contains(searchString));
-        //    }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            return Ok(products);
+        }
 
-        //    if (!string.IsNullOrEmpty(filterString))
-        //    {
-        //        products = products.Where(p => p.Category.Contains(filterString));
-        //    }
+        [HttpGet("{prodId}")]
+        [ProducesResponseType(200, Type = typeof(Product))]
+        [ProducesResponseType(400)]
+        public IActionResult GetProduct(int prodId)
+        {
+            if (!productRepository.ProductExists(prodId))
+                return NotFound();
 
-        //    int pageSize = 10;
-        //    int skip = (page - 1) * pageSize;
+            var product = productRepository.GetProduct(prodId);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+            
+            return Ok(product);
+        }
 
-        //    var result = await products.Skip(skip).Take(pageSize).ToListAsync();
-        //    return Ok(result);
-        //}
+        [HttpGet("/api/results")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Product>))]
+        [ProducesResponseType(400)]
+        public IActionResult GetProducts(int? page, string? search = null, string? filter = null)
+        {
+            var products = productRepository.GetProducts(page ,search, filter);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return Ok(products);
+        }
+
+
+
     }
 }

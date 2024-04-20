@@ -10,12 +10,12 @@ namespace Webbshop.Pages
     public class CheckoutModel : PageModel
     {
         private readonly AppDbContext _context;
-        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IHttpContextAccessor httpContextAccessor;
 
         public CheckoutModel(AppDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
-            _httpContextAccessor = httpContextAccessor;
+            this.httpContextAccessor = httpContextAccessor;
         }
 
         public Basket Basket { get; set; }
@@ -23,7 +23,7 @@ namespace Webbshop.Pages
 
         public async Task OnGetAsync()
         {
-            var accessControl = new AccessControl(_context, _httpContextAccessor);
+            var accessControl = new AccessControl(_context, httpContextAccessor);
             var accId = accessControl.GetLoggedInAccountId();
 
             Basket = await _context.Baskets.Include(b => b.Items).FirstOrDefaultAsync(b => b.AccountId == accId);
@@ -37,7 +37,7 @@ namespace Webbshop.Pages
 
         public async Task<IActionResult> OnPostRemoveProductAsync(int itemId)
         {
-            var accessControl = new AccessControl(_context, _httpContextAccessor);
+            var accessControl = new AccessControl(_context, httpContextAccessor);
             var accId = accessControl.GetLoggedInAccountId();
 
             var basket = await _context.Baskets
@@ -59,7 +59,7 @@ namespace Webbshop.Pages
 
         public async Task<IActionResult> OnPostRemoveAllItemsAsync()
         {
-            var accessControl = new AccessControl(_context, _httpContextAccessor);
+            var accessControl = new AccessControl(_context, httpContextAccessor);
             var accId = accessControl.GetLoggedInAccountId();
 
             var basket = await _context.Baskets

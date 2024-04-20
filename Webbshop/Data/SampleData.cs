@@ -6,7 +6,6 @@ namespace Webbshop.Data
 	{
 		public static void Create(AppDbContext database)
 		{
-			// If there are no fake accounts, add some.
 			string fakeIssuer = "https://example.com";
 			if (!database.Accounts.Any(a => a.OpenIDIssuer == fakeIssuer))
 			{

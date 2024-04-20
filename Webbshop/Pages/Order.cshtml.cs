@@ -10,12 +10,12 @@ namespace Webbshop.Pages
     public class OrderModel : PageModel
     {
         private readonly AppDbContext context;
-        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IHttpContextAccessor httpContextAccessor;
 
         public OrderModel(AppDbContext context, IHttpContextAccessor httpContextAccessor)
         {
             this.context = context;
-            _httpContextAccessor = httpContextAccessor;
+            this.httpContextAccessor = httpContextAccessor;
         }
 
         [BindProperty(SupportsGet = true)]
@@ -37,7 +37,7 @@ namespace Webbshop.Pages
         {
             if (ModelState.IsValid)
             {
-                var accessControl = new AccessControl(context, _httpContextAccessor);
+                var accessControl = new AccessControl(context, httpContextAccessor);
                 var accId = accessControl.GetLoggedInAccountId();
 
                 var existingBasket = await context.Baskets 
@@ -58,13 +58,12 @@ namespace Webbshop.Pages
                 }
                 else
                 {
-                    Basket basket = new Basket
+                    Basket basket = new()
                     {
                         AccountId = accId,
                         Items = new List<OrderItem>
                         {
-                            new OrderItem
-                            {
+                            new() {
                                 ProductId = Id,
                                 UnitPrice = Price,
                                 Quantity = Quantity
