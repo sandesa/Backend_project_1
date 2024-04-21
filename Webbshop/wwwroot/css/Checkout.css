@@ -31,7 +31,7 @@
     }
 
         .item th:first-child, .item td:first-child {
-            width: 40%;
+            width: 30%;
         }
 
         .item th:last-child, .item td:last-child {
