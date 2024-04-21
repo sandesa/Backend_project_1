@@ -49,12 +49,20 @@ namespace Webbshop.Pages
 
                 if (existingBasket != null)
                 {
-                    existingBasket.Items.Add(new OrderItem
+                    var existingItem = existingBasket.Items.Find(p => p.ProductId == Id);
+                    if(existingItem != null)
                     {
-                        ProductId = Id,
-                        UnitPrice = Price,
-                        Quantity = Quantity,
-                    });
+                        existingItem.Quantity += Quantity;
+                    }
+                    else
+                    {
+                        existingBasket.Items.Add(new OrderItem
+                        {
+                            ProductId = Id,
+                            UnitPrice = Price,
+                            Quantity = Quantity,
+                        });
+                    }
                 }
                 else
                 {

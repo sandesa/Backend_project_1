@@ -112,6 +112,8 @@ nav {
 .card-body {
     padding: 15px;
     height: 100%;
+    display:flex;
+    flex-direction: column;
 }
 
 .card-title {
@@ -127,10 +129,30 @@ nav {
     display: flex;
     justify-content: space-between;
     margin-top: auto;
+    align-items: center;
 }
 
 button {
     cursor: pointer;
+}
+
+.form-container {
+    display: flex;
+    align-items: center;
+}
+
+.page-btns {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    a {
+          margin: 1px;
+      }
+}
+
+.search-btn {
+    /*padding-top: 0px;
+    padding-bottom: 0px;*/
 }
 
 .product-details {

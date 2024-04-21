@@ -7,7 +7,7 @@ namespace Webbshop.Interfaces
         ICollection<Product> GetProducts();
         ICollection<Product> GetProducts(int? page, string? name, string? category);
 
-        Product GetProduct(int id);
-        bool ProductExists(int prodId);
+        Product GetProduct(string img);
+        bool ProductExists(string img);
     }
 }

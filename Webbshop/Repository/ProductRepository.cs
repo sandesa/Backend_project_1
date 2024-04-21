@@ -13,9 +13,9 @@ namespace Webbshop.Repository
             this.contex = contex;
         }
 
-        public Product GetProduct(int id)
+        public Product GetProduct(string imgName)
         {
-            return contex.Products.Where(p => p.Id == id).FirstOrDefault();
+            return contex.Products.Where(p => p.ImageName == imgName).FirstOrDefault();
         }
 
         public ICollection<Product> GetProducts()
@@ -45,9 +45,9 @@ namespace Webbshop.Repository
             return products.Distinct().OrderBy(p => p.Category).ToList();
         }
 
-        public bool ProductExists(int id)
+        public bool ProductExists(string img)
         {
-            return contex.Products.Any(p => p.Id == id);
+            return contex.Products.Any(p => p.ImageName == img);
         }
     }
 }

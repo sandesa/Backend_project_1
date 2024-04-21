@@ -76,10 +76,5 @@ namespace Webbshop.Pages
 
             return Page();
         }
-        
-        public IActionResult OnPostPageIndex() 
-        {
-            return RedirectToPage(new { search = Search, filter = Filter, pageNum = PageNum });
-        }
     }
 }

@@ -1,12 +1,18 @@
 ﻿@page
 @model Webbshop.Pages.SearchModel
+<head>
+    <link rel="stylesheet" href="/css/Search.css" />
+</head>
 
 <div class="container">
-    <form style="display: flex;" method="get">
-        <div>
+    <form style="display: flex; align-items:center; justify-content: space-between;" method="get">
+        <div class="form-container">
             <input asp-for="Search" id="searchString" type="text" placeholder="Search" />
+            <div>
+                <button type="submit" class="search-btn">Search</button>
+            </div>
         </div>
-        <div>
+        <div class="form-container" style="margin-right: 10px">
             <label for="filter">Filter:</label>
             <select asp-for="Filter" id="filter">
                 <option value="">All</option>
@@ -18,8 +24,10 @@
                 <option value="Sport och fritid">Sport och fritid</option>
                 <option value="Utomhus">Utomhus</option>
             </select>
+            <div>
+                <button type="submit" class="search-btn">Filter</button>
+            </div>
         </div>
-        <button type="submit" class="search-btn">Search</button>
     </form>
 </div>
 
@@ -46,22 +54,36 @@
     }
 </div>
 
-<div>
-    @if (Model.TotalPages > 1)
-    {
-        <div class="container">
-            <span>@Model.CurrentPage / @Model.TotalPages</span>
-            @if (Model.CurrentPage > 1)
-            {
-                <a asp-page="/Search" asp-route-pageNum="1" asp-route-search="@Model.Search" asp-route-filter="@Model.Filter" class="page-link"><button class="page-btn">First</button></a>
-                <a asp-page="/Search" asp-route-pageNum="@(Model.CurrentPage - 1)" asp-route-search="@Model.Search" asp-route-filter="@Model.Filter" class="page-link"><button class="page-btn">Previous</button></a>
-            }
+<div class="container" style="padding-top: 10px; margin-bottom: 10px">
+    <div class="page-btns">
+        @if (Model.TotalPages > 1)
+        {    
+            <div style="display: flex">
+                @if (Model.CurrentPage > 1)
+                {
+                    <div style="margin-right: 30px">
+                        <a asp-page="/Search" asp-route-pageNum="1" asp-route-search="@Model.Search" asp-route-filter="@Model.Filter" class="page-link">
+                            <button class="page-btn"><i class="fa-solid fa-angles-left"></i></button>
+                            </a>
+                        <a asp-page="/Search" asp-route-pageNum="@(Model.CurrentPage - 1)" asp-route-search="@Model.Search" asp-route-filter="@Model.Filter" class="page-link">
+                            <button class="page-btn"><i class="fa-solid fa-angle-left"></i></button>
+                            </a>
+                    </div>
+                }
 
-            @if (Model.CurrentPage < Model.TotalPages)
-            {
-                <a asp-page="/Search" asp-route-pageNum="@(Model.CurrentPage + 1)" asp-route-search="@Model.Search" asp-route-filter="@Model.Filter" class="page-link"><button class="page-btn">Next</button></a>
-                <a asp-page="/Search" asp-route-pageNum="@Model.TotalPages" asp-route-search="@Model.Search" asp-route-filter="@Model.Filter" class="page-link"><button class="page-btn">Last</button></a>
-            }
-        </div>
-    }
+                @if (Model.CurrentPage < Model.TotalPages)
+                {
+                    <div>
+                        <a asp-page="/Search" asp-route-pageNum="@(Model.CurrentPage + 1)" asp-route-search="@Model.Search" asp-route-filter="@Model.Filter" class="page-link">
+                            <button class="page-btn"><i class="fa-solid fa-angle-right"></i></button>
+                        </a>
+                        <a asp-page="/Search" asp-route-pageNum="@Model.TotalPages" asp-route-search="@Model.Search" asp-route-filter="@Model.Filter" class="page-link">
+                            <button class="page-btn"><i class="fa-solid fa-angles-right"></i></button>
+                            </a>
+                    </div>
+                }
+            </div>
+        }
+        <span>Page @Model.CurrentPage of @Model.TotalPages</span>
+    </div>
 </div>

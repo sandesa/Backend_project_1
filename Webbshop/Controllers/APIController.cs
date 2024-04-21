@@ -31,15 +31,15 @@ namespace Webbshop.Controllers
             return Ok(products);
         }
 
-        [HttpGet("{prodId}")]
+        [HttpGet("{imgName}")]
         [ProducesResponseType(200, Type = typeof(Product))]
         [ProducesResponseType(400)]
-        public IActionResult GetProduct(int prodId)
+        public IActionResult GetProduct(string imgName)
         {
-            if (!productRepository.ProductExists(prodId))
+            if (!productRepository.ProductExists(imgName))
                 return NotFound();
 
-            var product = productRepository.GetProduct(prodId);
+            var product = productRepository.GetProduct(imgName);
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             
