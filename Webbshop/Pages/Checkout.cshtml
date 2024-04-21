@@ -9,7 +9,7 @@
 <div class="main">
 <div class="checkout-container container">
     <h1 class="title">Checkout</h1>
-    @if (Model.Basket != null && Model.Basket.NumberOfItems > 0)
+    @if (Model.basket != null && Model.basket.NumberOfItems > 0)
     {
             <table class="item">
                 <thead>
@@ -27,7 +27,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.Basket.Items)
+                    @foreach (var item in Model.basket.Items)
                     {
                         <tr>
                             <td>
@@ -48,7 +48,7 @@
                 <tfoot class="total-price">
                     <tr>
                         <td colspan="5"><b>Total:</b></td>
-                        <td class="">@Model.Basket.Items.Sum(x => x.Quantity * x.UnitPrice).ToString("c")</td>
+                        <td class="">@Model.basket.Items.Sum(x => x.Quantity * x.UnitPrice).ToString("c")</td>
                     </tr>
                 </tfoot>
             </table>

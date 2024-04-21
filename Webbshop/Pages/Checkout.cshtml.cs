@@ -17,7 +17,7 @@ namespace Webbshop.Pages
             this.httpContextAccessor = httpContextAccessor;
         }
 
-        public Basket Basket { get; set; }
+        public Basket basket { get; set; }
         public List<Product> SelectedProducts { get; set; } = new List<Product>();
 
         public async Task OnGetAsync()
@@ -25,11 +25,11 @@ namespace Webbshop.Pages
             var accessControl = new AccessControl(_context, httpContextAccessor);
             var accId = accessControl.GetLoggedInAccountId();
 
-            Basket = await _context.Baskets.Include(b => b.Items).FirstOrDefaultAsync(b => b.AccountId == accId);
+            basket = await _context.Baskets.Include(b => b.Items).FirstOrDefaultAsync(b => b.AccountId == accId);
 
-            if (Basket != null && Basket.NumberOfItems > 0)
+            if (basket != null && basket.NumberOfItems > 0)
             {
-                var productIds = Basket.Items.Select(item => item.ProductId).ToList();
+                var productIds = basket.Items.Select(item => item.ProductId).ToList();
                 SelectedProducts = await _context.Products.Where(p => productIds.Contains(p.Id)).ToListAsync();
             }
         }
@@ -79,12 +79,16 @@ namespace Webbshop.Pages
             var accessControl = new AccessControl(_context, httpContextAccessor);
             var accId = accessControl.GetLoggedInAccountId();
 
-            Basket = await _context.Baskets.Include(b => b.Items).FirstOrDefaultAsync(b => b.AccountId == accId);
+            basket = await _context.Baskets.Include(b => b.Items).FirstOrDefaultAsync(b => b.AccountId == accId);
 
             if (ModelState.IsValid)
             {
-                var totalCostCheckout = Basket.Items.Sum(p => p.Quantity * p.UnitPrice);
-                TempData["TotalCostCheckout"] = totalCostCheckout.ToString();
+                    var totalCostCheckout = basket.Items.Sum(p => p.Quantity * p.UnitPrice);
+                    TempData["TotalCostCheckout"] = totalCostCheckout.ToString();
+
+                    _context.RemoveRange(basket.Items);
+                    await _context.SaveChangesAsync();
+                
                 return RedirectToPage("/PlaceOrder");
             }
             return Page();
