@@ -1,0 +1,10 @@
+﻿@page
+@model Webbshop.Pages.PlaceOrderModel
+@{
+    ViewData["Title"] = "Confirmation";
+}
+
+<div class="container" style="margin-top: 10px">
+    <p>Your order has been placed successfully!</p>
+    <p>Total cost: @Model.TotalCost.ToString("c")</p>
+</div>

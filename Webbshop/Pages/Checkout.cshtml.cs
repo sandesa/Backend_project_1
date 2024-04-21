@@ -73,5 +73,22 @@ namespace Webbshop.Pages
 
             return RedirectToPage("/Checkout");
         }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            var accessControl = new AccessControl(_context, httpContextAccessor);
+            var accId = accessControl.GetLoggedInAccountId();
+
+            Basket = await _context.Baskets.Include(b => b.Items).FirstOrDefaultAsync(b => b.AccountId == accId);
+
+            if (ModelState.IsValid)
+            {
+                var totalCostCheckout = Basket.Items.Sum(p => p.Quantity * p.UnitPrice);
+                TempData["TotalCostCheckout"] = totalCostCheckout.ToString();
+                return RedirectToPage("/PlaceOrder");
+            }
+            return Page();
+
+        }
     }
 }

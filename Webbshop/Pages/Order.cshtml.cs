@@ -83,7 +83,7 @@ namespace Webbshop.Pages
 
                 await context.SaveChangesAsync();
 
-                string confirmation = "Your order has been placed successfully!";
+                string confirmation = "The item has been added to your cart!";
                 TempData["Confirmation"] = confirmation;
 
                 decimal totalCost = Quantity * Price;
