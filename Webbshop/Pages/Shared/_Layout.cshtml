@@ -17,6 +17,7 @@
 <body>
     <header>
         <nav class="container">
+
             <div>
                 <a class="head-title" href="/">The Webbshop</a>
             </div>
@@ -30,19 +31,22 @@
                 <li>
                     <a class="nav-link checkout" asp-page="/Checkout">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        <i>Kundvagn</i>
+                        <i>Cart</i>
                     </a>
                 </li>
             </ul>
         </nav>
     </header>
     <main>
-        <div class="login" style="margin-bottom: 10px">
+        <div class="login" >
             <environment names="Development">
                 @await Component.InvokeAsync(nameof(FakeLoginMenu))
             </environment>
         </div>
         <div class="container back-btn">
+            <a asp-page="/Index">
+                <button class="custom-button">Back</button>
+            </a>
             <a asp-page="/Search"><button>Back</button></a>
         </div>
         @RenderBody()
