@@ -46,7 +46,7 @@ namespace Webbshop.Controllers
             return Ok(product);
         }
 
-        [HttpGet("/api/results")]
+        [HttpGet("/api/search")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Product>))]
         [ProducesResponseType(400)]
         public IActionResult GetProducts(int? page, string? search = null, string? filter = null)

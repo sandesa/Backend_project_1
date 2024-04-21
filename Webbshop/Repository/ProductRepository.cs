@@ -37,12 +37,12 @@ namespace Webbshop.Repository
                 products = products.Where(p => p.Category.Contains(category));
             }
 
-            if (page == null)
+            if (page != null)
             {
-                return products.Distinct().OrderBy(p => p.Category).ToList();
+                return products.Distinct().OrderBy(p => p.Category).Skip(((int)page - 1) * 10).Take(10).ToList();
             }
 
-            return products.Distinct().OrderBy(p => p.Category).ToList();
+            return products.Distinct().OrderBy(p => p.Category).Take(10).ToList();
         }
 
         public bool ProductExists(string img)

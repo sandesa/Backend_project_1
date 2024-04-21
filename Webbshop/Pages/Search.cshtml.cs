@@ -1,17 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Webbshop.Data;
 using Webbshop.Models;
 
 namespace Webbshop.Pages
 {
     public class SearchModel : PageModel
     {
-        private readonly HttpClient httpClient;
+        private readonly AppDbContext context;
 
-        public SearchModel(HttpClient httpClient)
-        {
-            this.httpClient= httpClient;
-        }
+        public SearchModel(AppDbContext context) => this.context = context;
 
         [BindProperty(SupportsGet = true)]
         public string Filter { get; set; }
@@ -26,53 +24,32 @@ namespace Webbshop.Pages
         public int TotalPages { get; set; }
         public List<Product> Products { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(string search, string filter, int? pageNum)
+        public async Task<IActionResult> OnGetAsync(int? pageNum)
         {
-            try
+            IQueryable<Product> products = context.Products;
+
+            if (!string.IsNullOrEmpty(Search))
             {
-                var uRI = $"https://localhost:5000/api/results";
-
-                if (!string.IsNullOrEmpty(search) || !string.IsNullOrEmpty(filter) || pageNum.HasValue)
-                {
-                    uRI += "?";
-
-                    if (!string.IsNullOrEmpty(search))
-                        uRI += $"search={search}";
-
-                    if (!string.IsNullOrEmpty(filter))
-                        uRI += $"&filter={filter}";
-
-                    if (pageNum.HasValue)
-                    {
-                        if (!string.IsNullOrEmpty(search) || !string.IsNullOrEmpty(filter))
-                            uRI += "&";
-                        uRI += $"page={pageNum}";
-                    }
-                }
-
-                var response = await httpClient.GetAsync(uRI);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    Products = await response.Content.ReadFromJsonAsync<List<Product>>();
-                }
-                else
-                {
-                    Products = new List<Product>();
-                }
+                products = products.Where(p => p.Name.Contains(Search));
             }
-            catch (Exception)
+
+            if (!string.IsNullOrEmpty(Filter))
             {
-                Products = new List<Product>();
+                products = products.Where(p => p.Category.Contains(Filter));
             }
+
+            int totalProducts = products.Count();
+
+            TotalPages = (int)Math.Ceiling((double)totalProducts / 10);
 
             CurrentPage = pageNum ?? 1;
 
-            int totalProducts = Products.Count;
+            Products = products.Distinct().OrderBy(p => p.Category).ToList();
 
-            Products = Products.Skip((CurrentPage - 1) * 10).Take(10).ToList();
-
-            TotalPages = (int)Math.Ceiling((double)totalProducts / 10);
+            Products = Products
+                .Skip((CurrentPage - 1) * 10)
+                .Take(10)
+                .ToList();
 
             return Page();
         }
